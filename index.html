@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cylinder Calculator</title>
+</head>
+<body>
+    <h1>Cylinder Area and Volume Calculator</h1>
+    <form id="cylinderForm">
+        <label for="radius">Radius:</label>
+        <input type="number" id="radius" placeholder="Enter radius" required><br><br>
+        
+        <label for="height">Height:</label>
+        <input type="number" id="height" placeholder="Enter height" required><br><br>
+        
+        <button type="button" onclick="calculateCylinder()">Calculate</button><br><br>
+        
+        <label for="area">Area:</label>
+        <input type="text" id="area" readonly><br><br>
+        
+        <label for="volume">Volume:</label>
+        <input type="text" id="volume" readonly><br><br>
+    </form>
+
+    <script>
+        function calculateCylinder() {
+            // Get radius and height values
+            const radius = parseFloat(document.getElementById("radius").value);
+            const height = parseFloat(document.getElementById("height").value);
+            
+            // Check for valid input
+            if (isNaN(radius) || isNaN(height) || radius <= 0 || height <= 0) {
+                alert("Please enter positive values for radius and height.");
+                return;
+            }
+
+            // Calculate area and volume
+            const area = 2 * Math.PI * radius * (radius + height);
+            const volume = Math.PI * Math.pow(radius, 2) * height;
+
+            // Display the results
+            document.getElementById("area").value = area.toFixed(2);
+            document.getElementById("volume").value = volume.toFixed(2);
+        }
+    </script>
+</body>
+</html>
